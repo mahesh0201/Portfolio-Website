@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <style>
+      .bg { fill: #0a0a0f; }
+      .text { fill: #00f0ff; font-family: 'Arial', sans-serif; font-weight: bold; font-size: 32px; }
+      .border { stroke: #00f0ff; stroke-width: 2; fill: none; }
+    </style>
+  </defs>
+  <!-- Background -->
+  <rect class="bg" width="64" height="64"/>
+  
+  <!-- Border -->
+  <rect class="border" x="2" y="2" width="60" height="60" rx="4"/>
+  
+  <!-- MP Text -->
+  <text class="text" x="32" y="44" text-anchor="middle">MP</text>
+</svg>

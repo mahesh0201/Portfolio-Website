@@ -12,6 +12,9 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { TypeAnimation } from "react-type-animation";
 import { motion, useScroll, useTransform } from "framer-motion";
 import CelestialMatrixShader from "./ui/martrix-shader";
+import { CyberSecurityVisualizer } from "./ui/CyberSecurityVisualizer";
+import { TextScramble } from "./ui/text-scramble";
+import { WireframeGlobe } from "./ui/wireframe-dotted-globe";
 
 // Hexagon particle data
 const HEX_COUNT = 18;
@@ -62,7 +65,7 @@ const Hero = () => {
     >
       {/* Matrix Shader Background */}
       <CelestialMatrixShader />
-      
+
       {/* Overlay gradient for depth */}
       <Box
         sx={{
@@ -224,6 +227,12 @@ const Hero = () => {
                       fontFamily: '"Share Tech Mono", monospace',
                       color: "primary.main",
                       fontSize: { xs: "1.1rem", md: "1.4rem" },
+                      background: "linear-gradient(90deg, #00f0ff, #00ff88)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                      fontWeight: 700,
+                      letterSpacing: 1,
                     }}
                   >
                     <TypeAnimation
@@ -328,82 +337,18 @@ const Hero = () => {
               </motion.div>
             </Box>
 
-            {/* Profile avatar */}
+            {/* Wireframe Globe - Interactive 3D Globe */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{
-                duration: 0.7,
+                duration: 0.8,
                 delay: 0.4,
                 type: "spring",
-                stiffness: 100,
+                stiffness: 80,
               }}
             >
-              <Box
-                sx={{
-                  position: "relative",
-                  width: { xs: 220, md: 280 },
-                  height: { xs: 220, md: 280 },
-                }}
-              >
-                {/* Rotating ring */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  style={{
-                    position: "absolute",
-                    inset: -8,
-                    borderRadius: "50%",
-                    border: "2px dashed rgba(0,240,255,0.3)",
-                  }}
-                />
-                <motion.div
-                  animate={{ rotate: -360 }}
-                  transition={{
-                    duration: 30,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  style={{
-                    position: "absolute",
-                    inset: -16,
-                    borderRadius: "50%",
-                    border: "1px dashed rgba(0,240,255,0.15)",
-                  }}
-                />
-                <Avatar
-                  src="/assets/images/profile-placeholder.svg"
-                  alt="Mahesh Pandi"
-                  sx={{
-                    width: "100%",
-                    height: "100%",
-                    border: "3px solid rgba(0,240,255,0.4)",
-                    boxShadow: "0 0 40px rgba(0,240,255,0.2)",
-                    fontSize: "5rem",
-                    background: "linear-gradient(135deg, #1a1a2e, #12121a)",
-                  }}
-                >
-                  MP
-                </Avatar>
-                {/* Online indicator */}
-                <Box
-                  sx={{
-                    position: "absolute",
-                    bottom: 12,
-                    right: 12,
-                    width: 16,
-                    height: 16,
-                    borderRadius: "50%",
-                    background: "#00ff88",
-                    border: "2px solid #0a0a0f",
-                    boxShadow: "0 0 8px #00ff88",
-                  }}
-                />
-              </Box>
+              <WireframeGlobe width={420} height={420} />
             </motion.div>
           </Box>
         </motion.div>

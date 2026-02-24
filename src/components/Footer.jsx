@@ -54,7 +54,7 @@ const Footer = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             {/* REPLACE */}
-            &lt;JD /&gt;
+            &lt;MPjd /&gt;
           </Typography>
 
           {/* Quick nav */}
@@ -120,7 +120,7 @@ const Footer = () => {
             }}
           >
             {/* REPLACE */}
-            © {new Date().getFullYear()} John Doe. Built with React & Material UI.
+            © {new Date().getFullYear()} Mahesh Pandi. Built with React & Material UI.
           </Typography>
         </Box>
       </Container>
