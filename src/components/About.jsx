@@ -1,43 +1,52 @@
-import React from 'react';
-import { Box, Container, Typography, Chip, Grid, Paper } from '@mui/material';
-import SecurityIcon from '@mui/icons-material/Security';
-import CodeIcon from '@mui/icons-material/Code';
-import CloudIcon from '@mui/icons-material/Cloud';
-import DevicesIcon from '@mui/icons-material/Devices';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import React from "react";
+import { Box, Container, Typography, Chip, Grid, Paper } from "@mui/material";
+import SecurityIcon from "@mui/icons-material/Security";
+import CodeIcon from "@mui/icons-material/Code";
+import CloudIcon from "@mui/icons-material/Cloud";
+import DevicesIcon from "@mui/icons-material/Devices";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const interests = [
   // {/* REPLACE */}
-  'Penetration Testing', 'Threat Intelligence', 'Zero Trust Architecture',
-  'React / React Native', 'Python', 'AWS Security', 'FastAPI', 'Docker',
-  'CI/CD Pipelines', 'Incident Response', 'CTF Competitions', 'Open Source',
+  "Penetration Testing",
+  "Threat Intelligence",
+  "Zero Trust Architecture",
+  "React / React Native",
+  "Python",
+  "AWS Security",
+  "FastAPI",
+  "Docker",
+  "CI/CD Pipelines",
+  "Incident Response",
+  "CTF Competitions",
+  "Open Source",
 ];
 
 const highlights = [
   {
     icon: <SecurityIcon />,
-    title: 'Cybersecurity',
+    title: "Cybersecurity",
     // {/* REPLACE */}
-    desc: '5+ years in offensive & defensive security, specializing in web app pentesting and cloud security.',
+    desc: "5+ years in offensive & defensive security, specializing in web app pentesting and cloud security.",
   },
   {
     icon: <CodeIcon />,
-    title: 'Full-Stack Dev',
+    title: "Full-Stack Dev",
     // {/* REPLACE */}
-    desc: 'Expert in React, Python FastAPI, and REST APIs. Clean, maintainable code is my standard.',
+    desc: "Expert in React, Python FastAPI, and REST APIs. Clean, maintainable code is my standard.",
   },
   {
     icon: <DevicesIcon />,
-    title: 'Mobile Dev',
+    title: "Mobile Dev",
     // {/* REPLACE */}
-    desc: 'Building cross-platform mobile apps with React Native, deployed to both iOS and Android.',
+    desc: "Building cross-platform mobile apps with React Native, deployed to both iOS and Android.",
   },
   {
     icon: <CloudIcon />,
-    title: 'Cloud & AWS',
+    title: "Cloud & AWS",
     // {/* REPLACE */}
-    desc: 'AWS Certified with deep expertise in IAM, EC2, Lambda, S3, and cloud security posture.',
+    desc: "AWS Certified with deep expertise in IAM, EC2, Lambda, S3, and cloud security posture.",
   },
 ];
 
@@ -48,8 +57,9 @@ const About = () => {
     <Box
       sx={{
         py: { xs: 10, md: 14 },
-        background: 'linear-gradient(180deg, #0a0a0f 0%, #0e0e1a 50%, #0a0a0f 100%)',
-        position: 'relative',
+        background:
+          "linear-gradient(180deg, #0a0a0f 0%, #0e0e1a 50%, #0a0a0f 100%)",
+        position: "relative",
       }}
     >
       <Container maxWidth="lg" ref={ref}>
@@ -59,15 +69,15 @@ const About = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <Box sx={{ textAlign: 'center', mb: 8 }}>
+          <Box sx={{ textAlign: "center", mb: 8 }}>
             <Typography
               sx={{
                 fontFamily: '"Share Tech Mono", monospace',
-                color: 'primary.main',
+                color: "primary.main",
                 letterSpacing: 4,
-                fontSize: '0.85rem',
+                fontSize: "0.85rem",
                 mb: 1,
-                textTransform: 'uppercase',
+                textTransform: "uppercase",
               }}
             >
               01 / About Me
@@ -75,9 +85,9 @@ const About = () => {
             <Typography
               variant="h2"
               sx={{
-                fontSize: { xs: '2rem', md: '2.8rem' },
+                fontSize: { xs: "2rem", md: "2.8rem" },
                 fontWeight: 700,
-                color: 'text.primary',
+                color: "text.primary",
               }}
             >
               Who I Am
@@ -86,8 +96,9 @@ const About = () => {
               sx={{
                 width: 60,
                 height: 3,
-                background: 'linear-gradient(90deg, transparent, #00f0ff, transparent)',
-                mx: 'auto',
+                background:
+                  "linear-gradient(90deg, transparent, #00f0ff, transparent)",
+                mx: "auto",
                 mt: 2,
               }}
             />
@@ -105,48 +116,65 @@ const About = () => {
               <Typography
                 variant="body1"
                 sx={{
-                  color: 'text.secondary',
+                  color: "text.secondary",
                   lineHeight: 1.9,
-                  fontSize: '1.05rem',
+                  fontSize: "1.05rem",
                   mb: 3,
                 }}
               >
-                {/* REPLACE */}
-                Hi! I'm <Box component="span" sx={{ color: 'primary.main', fontWeight: 600 }}>John Doe</Box>, a
-                cybersecurity professional and full-stack developer based in{' '}
-                <Box component="span" sx={{ color: 'primary.main', fontWeight: 600 }}>New York, USA</Box>.
-                I specialize in building secure, high-performance applications that bridge the gap between
-                development and security operations.
+                Hi! I'm{" "}
+                <Box
+                  component="span"
+                  sx={{ color: "primary.main", fontWeight: 600 }}
+                >
+                  Mahesh Pandi
+                </Box>
+                , a cybersecurity professional and full-stack developer with a
+                passion for{" "}
+                <Box
+                  component="span"
+                  sx={{ color: "primary.main", fontWeight: 600 }}
+                >
+                  innovative solutions
+                </Box>
+                . I specialize in building secure, high-performance applications
+                that bridge the gap between development and security operations.
               </Typography>
               <Typography
                 variant="body1"
-                sx={{ color: 'text.secondary', lineHeight: 1.9, fontSize: '1.05rem', mb: 4 }}
+                sx={{
+                  color: "text.secondary",
+                  lineHeight: 1.9,
+                  fontSize: "1.05rem",
+                  mb: 4,
+                }}
               >
-                {/* REPLACE */}
-                With a background in offensive security and modern web technologies, I bring a security-first
-                mindset to every project. I hold multiple industry certifications and actively participate in
-                CTF competitions and bug bounty programs.
+                With a background in offensive and defensive security combined
+                with modern web development, I bring a security-first mindset to
+                every project. I'm passionate about crafting elegant solutions,
+                participating in CTF competitions, and contributing to
+                open-source security initiatives.
               </Typography>
 
               {/* Interests */}
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
                 {interests.map((tag) => (
                   <Chip
                     key={tag}
                     label={tag}
                     size="small"
                     sx={{
-                      background: 'rgba(0,240,255,0.07)',
-                      border: '1px solid rgba(0,240,255,0.2)',
-                      color: 'text.secondary',
+                      background: "rgba(0,240,255,0.07)",
+                      border: "1px solid rgba(0,240,255,0.2)",
+                      color: "text.secondary",
                       fontFamily: '"Share Tech Mono", monospace',
-                      fontSize: '0.72rem',
-                      '&:hover': {
-                        background: 'rgba(0,240,255,0.15)',
-                        color: 'primary.main',
-                        borderColor: 'rgba(0,240,255,0.5)',
+                      fontSize: "0.72rem",
+                      "&:hover": {
+                        background: "rgba(0,240,255,0.15)",
+                        color: "primary.main",
+                        borderColor: "rgba(0,240,255,0.5)",
                       },
-                      transition: 'all 0.2s',
+                      transition: "all 0.2s",
                     }}
                   />
                 ))}
@@ -168,30 +196,36 @@ const About = () => {
                     <Paper
                       sx={{
                         p: 3,
-                        background: '#1a1a2e',
-                        border: '1px solid rgba(0,240,255,0.1)',
+                        background: "#1a1a2e",
+                        border: "1px solid rgba(0,240,255,0.1)",
                         borderRadius: 3,
-                        height: '100%',
-                        '&:hover': {
-                          border: '1px solid rgba(0,240,255,0.3)',
-                          boxShadow: '0 4px 30px rgba(0,240,255,0.08)',
+                        height: "100%",
+                        "&:hover": {
+                          border: "1px solid rgba(0,240,255,0.3)",
+                          boxShadow: "0 4px 30px rgba(0,240,255,0.08)",
                         },
-                        transition: 'all 0.3s',
+                        transition: "all 0.3s",
                       }}
                     >
                       <Box
                         sx={{
-                          color: 'primary.main',
+                          color: "primary.main",
                           mb: 1.5,
-                          '& svg': { fontSize: '1.8rem' },
+                          "& svg": { fontSize: "1.8rem" },
                         }}
                       >
                         {item.icon}
                       </Box>
-                      <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, fontSize: '1rem' }}>
+                      <Typography
+                        variant="h6"
+                        sx={{ fontWeight: 700, mb: 1, fontSize: "1rem" }}
+                      >
                         {item.title}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
+                      <Typography
+                        variant="body2"
+                        sx={{ color: "text.secondary", lineHeight: 1.7 }}
+                      >
                         {item.desc}
                       </Typography>
                     </Paper>

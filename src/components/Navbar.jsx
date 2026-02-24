@@ -1,27 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
-  AppBar, Toolbar, Typography, Box, Button, IconButton,
-  Drawer, List, ListItem, ListItemText, useScrollTrigger,
-  useTheme, useMediaQuery,
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-import { motion, AnimatePresence } from 'framer-motion';
+  AppBar,
+  Toolbar,
+  Typography,
+  Box,
+  Button,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  useScrollTrigger,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Certifications', href: '#certifications' },
-  { label: 'Resume', href: '#resume' },
-  { label: 'Contact', href: '#contact' },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Certifications", href: "#certifications" },
+  { label: "Resume", href: "#resume" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState("");
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -30,7 +40,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navLinks.map((l) => l.href.replace('#', ''));
+      const sections = navLinks.map((l) => l.href.replace("#", ""));
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
         if (el && window.scrollY >= el.offsetTop - 120) {
@@ -39,15 +49,15 @@ const Navbar = () => {
         }
       }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = (href) => {
     setDrawerOpen(false);
-    const id = href.replace('#', '');
+    const id = href.replace("#", "");
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -56,15 +66,13 @@ const Navbar = () => {
         position="fixed"
         elevation={trigger ? 4 : 0}
         sx={{
-          background: trigger
-            ? 'rgba(10, 10, 15, 0.95)'
-            : 'transparent',
-          backdropFilter: trigger ? 'blur(12px)' : 'none',
-          borderBottom: trigger ? '1px solid rgba(0,240,255,0.15)' : 'none',
-          transition: 'all 0.3s ease',
+          background: trigger ? "rgba(10, 10, 15, 0.95)" : "transparent",
+          backdropFilter: trigger ? "blur(12px)" : "none",
+          borderBottom: trigger ? "1px solid rgba(0,240,255,0.15)" : "none",
+          transition: "all 0.3s ease",
         }}
       >
-        <Toolbar sx={{ justifyContent: 'space-between', px: { xs: 2, md: 4 } }}>
+        <Toolbar sx={{ justifyContent: "space-between", px: { xs: 2, md: 4 } }}>
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -75,21 +83,20 @@ const Navbar = () => {
               variant="h6"
               sx={{
                 fontFamily: '"Share Tech Mono", monospace',
-                color: 'primary.main',
-                cursor: 'pointer',
+                color: "primary.main",
+                cursor: "pointer",
                 letterSpacing: 2,
-                '&:hover': { textShadow: '0 0 12px #00f0ff' },
+                "&:hover": { textShadow: "0 0 12px #00f0ff" },
               }}
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
-              {/* REPLACE */}
-              &lt;JD /&gt;
+              &lt;MP /&gt;
             </Typography>
           </motion.div>
 
           {/* Desktop nav */}
           {!isMobile && (
-            <Box sx={{ display: 'flex', gap: 1 }}>
+            <Box sx={{ display: "flex", gap: 1 }}>
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -100,27 +107,31 @@ const Navbar = () => {
                   <Button
                     onClick={() => handleNavClick(link.href)}
                     sx={{
-                      color: activeSection === link.href.replace('#', '')
-                        ? 'primary.main'
-                        : 'text.secondary',
+                      color:
+                        activeSection === link.href.replace("#", "")
+                          ? "primary.main"
+                          : "text.secondary",
                       fontFamily: '"Share Tech Mono", monospace',
-                      fontSize: '0.82rem',
+                      fontSize: "0.82rem",
                       letterSpacing: 1,
-                      position: 'relative',
-                      '&::after': {
+                      position: "relative",
+                      "&::after": {
                         content: '""',
-                        position: 'absolute',
+                        position: "absolute",
                         bottom: 4,
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        width: activeSection === link.href.replace('#', '') ? '60%' : '0%',
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        width:
+                          activeSection === link.href.replace("#", "")
+                            ? "60%"
+                            : "0%",
                         height: 1.5,
-                        background: '#00f0ff',
-                        transition: 'width 0.3s ease',
+                        background: "#00f0ff",
+                        transition: "width 0.3s ease",
                         borderRadius: 1,
                       },
-                      '&:hover': { color: 'primary.main' },
-                      '&:hover::after': { width: '60%' },
+                      "&:hover": { color: "primary.main" },
+                      "&:hover::after": { width: "60%" },
                     }}
                   >
                     {link.label}
@@ -134,7 +145,7 @@ const Navbar = () => {
           {isMobile && (
             <IconButton
               onClick={() => setDrawerOpen(true)}
-              sx={{ color: 'primary.main' }}
+              sx={{ color: "primary.main" }}
             >
               <MenuIcon />
             </IconButton>
@@ -150,14 +161,17 @@ const Navbar = () => {
         PaperProps={{
           sx: {
             width: 260,
-            background: 'rgba(10,10,15,0.98)',
-            backdropFilter: 'blur(20px)',
-            borderLeft: '1px solid rgba(0,240,255,0.2)',
+            background: "rgba(10,10,15,0.98)",
+            backdropFilter: "blur(20px)",
+            borderLeft: "1px solid rgba(0,240,255,0.2)",
           },
         }}
       >
-        <Box sx={{ p: 2, display: 'flex', justifyContent: 'flex-end' }}>
-          <IconButton onClick={() => setDrawerOpen(false)} sx={{ color: 'primary.main' }}>
+        <Box sx={{ p: 2, display: "flex", justifyContent: "flex-end" }}>
+          <IconButton
+            onClick={() => setDrawerOpen(false)}
+            sx={{ color: "primary.main" }}
+          >
             <CloseIcon />
           </IconButton>
         </Box>
@@ -170,9 +184,9 @@ const Navbar = () => {
               sx={{
                 borderRadius: 2,
                 mb: 0.5,
-                '&:hover': {
-                  background: 'rgba(0,240,255,0.08)',
-                  '& .MuiListItemText-primary': { color: 'primary.main' },
+                "&:hover": {
+                  background: "rgba(0,240,255,0.08)",
+                  "& .MuiListItemText-primary": { color: "primary.main" },
                 },
               }}
             >
@@ -180,7 +194,10 @@ const Navbar = () => {
                 primary={link.label}
                 primaryTypographyProps={{
                   fontFamily: '"Share Tech Mono", monospace',
-                  color: activeSection === link.href.replace('#', '') ? 'primary.main' : 'text.primary',
+                  color:
+                    activeSection === link.href.replace("#", "")
+                      ? "primary.main"
+                      : "text.primary",
                 }}
               />
             </ListItem>
