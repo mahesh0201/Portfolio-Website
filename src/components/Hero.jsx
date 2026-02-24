@@ -55,14 +55,24 @@ const Hero = () => {
         display: "flex",
         alignItems: "center",
         position: "relative",
-        background:
-          "radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.07) 0%, transparent 60%), #0a0a0f",
+        background: "transparent",
         overflow: "hidden",
         pt: 8,
       }}
     >
       {/* Matrix Shader Background */}
       <CelestialMatrixShader />
+      
+      {/* Overlay gradient for depth */}
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.07) 0%, transparent 60%)",
+          pointerEvents: "none",
+        }}
+      />
       {/* Animated grid lines */}
       <Box
         sx={{
@@ -73,6 +83,7 @@ const Hero = () => {
           backgroundSize: "60px 60px",
           maskImage:
             "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)",
+          pointerEvents: "none",
         }}
       />
 
@@ -217,7 +228,6 @@ const Hero = () => {
                   >
                     <TypeAnimation
                       sequence={[
-                        // {/* REPLACE */}
                         "Cybersecurity Engineer",
                         2000,
                         "Full-Stack Developer",
@@ -273,7 +283,7 @@ const Hero = () => {
                     variant="contained"
                     size="large"
                     startIcon={<DownloadIcon />}
-                    href="/assets/resume/resume.pdf" // {/* REPLACE */}
+                    href="/assets/resume/resume.pdf"
                     download
                     sx={{
                       background: "linear-gradient(135deg, #00f0ff, #00b8c4)",

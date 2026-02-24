@@ -3,7 +3,7 @@ import {
   Box, Container, Typography, Card, CardContent, Grid, Chip,
 } from '@mui/material';
 import VerifiedIcon from '@mui/icons-material/Verified';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion} from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 // {/* REPLACE - update with your actual certifications */}
