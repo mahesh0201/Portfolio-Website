@@ -1,0 +1,3 @@
+git add .
+git commit -m "Fix 404 - add Netlify redirects"
+git push
