@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0a0a0f;
+  overflow-x: hidden;
+  font-family: 'Exo 2', sans-serif;
+}
+
+section {
+  overflow: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #00f0ff;
+  border-radius: 3px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 240, 255, 0.3);
+  color: #00f0ff;
+}
+
+/* Smooth transitions */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Mono font utility */
+.mono {
+  font-family: 'Share Tech Mono', monospace;
+}
