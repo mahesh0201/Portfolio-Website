@@ -16,11 +16,7 @@ const cyberAttackPoints = [
   { coords: [-0.1278, 51.5074], city: "London", type: "attacked" },
 ];
 
-export function WireframeGlobe({
-  width = 420,
-  height = 420,
-  className = "",
-}) {
+export function WireframeGlobe({ width = 420, height = 420, className = "" }) {
   const canvasRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -61,7 +57,7 @@ export function WireframeGlobe({
         const [xi, yi] = polygon[i];
         const [xj, yj] = polygon[j];
 
-        if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) {
+        if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) {
           inside = !inside;
         }
       }
@@ -140,7 +136,13 @@ export function WireframeGlobe({
 
       // Draw ocean (globe background) - Cyan themed
       context.beginPath();
-      context.arc(containerWidth / 2, containerHeight / 2, currentScale, 0, 2 * Math.PI);
+      context.arc(
+        containerWidth / 2,
+        containerHeight / 2,
+        currentScale,
+        0,
+        2 * Math.PI,
+      );
       context.fillStyle = "#0a0a0f";
       context.fill();
       context.strokeStyle = "#00f0ff";
@@ -182,7 +184,13 @@ export function WireframeGlobe({
             projected[1] <= containerHeight
           ) {
             context.beginPath();
-            context.arc(projected[0], projected[1], 1.5 * scaleFactor, 0, 2 * Math.PI);
+            context.arc(
+              projected[0],
+              projected[1],
+              1.5 * scaleFactor,
+              0,
+              2 * Math.PI,
+            );
             context.fillStyle = "#00f0ff";
             context.globalAlpha = 0.7;
             context.fill();
@@ -213,7 +221,8 @@ export function WireframeGlobe({
 
             if (state === "attacked") {
               // RED ATTACK STATE - Blasts and explosions
-              const blastPulse = Math.sin(stateProgress * Math.PI * 2) * 0.5 + 0.5;
+              const blastPulse =
+                Math.sin(stateProgress * Math.PI * 2) * 0.5 + 0.5;
 
               // Outer blast ring
               context.beginPath();
@@ -222,7 +231,7 @@ export function WireframeGlobe({
                 projected[1],
                 15 * scaleFactor * blastPulse,
                 0,
-                2 * Math.PI
+                2 * Math.PI,
               );
               context.strokeStyle = `rgba(255, 0, 0, ${(1 - blastPulse) * 0.7})`;
               context.lineWidth = 2 * scaleFactor;
@@ -235,7 +244,7 @@ export function WireframeGlobe({
                 projected[1],
                 8 * scaleFactor * blastPulse,
                 0,
-                2 * Math.PI
+                2 * Math.PI,
               );
               context.strokeStyle = `rgba(255, 100, 0, ${(1 - blastPulse) * 0.6})`;
               context.lineWidth = 1.5 * scaleFactor;
@@ -243,7 +252,13 @@ export function WireframeGlobe({
 
               // Core attack point
               context.beginPath();
-              context.arc(projected[0], projected[1], 4 * scaleFactor, 0, 2 * Math.PI);
+              context.arc(
+                projected[0],
+                projected[1],
+                4 * scaleFactor,
+                0,
+                2 * Math.PI,
+              );
               context.fillStyle = `rgba(255, 0, 0, ${0.8})`;
               context.fill();
 
@@ -253,7 +268,11 @@ export function WireframeGlobe({
               context.fillStyle = "#ff0000";
               context.textAlign = "center";
               context.textBaseline = "bottom";
-              context.fillText("⚠", projected[0], projected[1] - 10 * scaleFactor);
+              context.fillText(
+                "⚠",
+                projected[0],
+                projected[1] - 10 * scaleFactor,
+              );
               context.globalAlpha = 1;
             } else if (state === "defending") {
               // YELLOW/ORANGE DEFENDING STATE - Shield appearing
@@ -266,7 +285,7 @@ export function WireframeGlobe({
                 projected[1],
                 12 * scaleFactor * shieldGrowth,
                 0,
-                2 * Math.PI
+                2 * Math.PI,
               );
               context.strokeStyle = `rgba(255, 200, 0, ${0.7 * (1 - shieldGrowth * 0.5)})`;
               context.lineWidth = 2 * scaleFactor;
@@ -274,7 +293,13 @@ export function WireframeGlobe({
 
               // Core staying red but brightening
               context.beginPath();
-              context.arc(projected[0], projected[1], 4 * scaleFactor, 0, 2 * Math.PI);
+              context.arc(
+                projected[0],
+                projected[1],
+                4 * scaleFactor,
+                0,
+                2 * Math.PI,
+              );
               context.fillStyle = `rgba(255, 100, 0, ${0.7})`;
               context.fill();
 
@@ -284,11 +309,16 @@ export function WireframeGlobe({
               context.fillStyle = "#ffcc00";
               context.textAlign = "center";
               context.textBaseline = "bottom";
-              context.fillText("◐", projected[0], projected[1] - 10 * scaleFactor);
+              context.fillText(
+                "◐",
+                projected[0],
+                projected[1] - 10 * scaleFactor,
+              );
               context.globalAlpha = 1;
             } else if (state === "defended") {
               // GREEN DEFENDED STATE - Shield active and pulsing
-              const defensePulse = Math.sin(stateProgress * Math.PI * 2) * 0.3 + 0.7;
+              const defensePulse =
+                Math.sin(stateProgress * Math.PI * 2) * 0.3 + 0.7;
 
               // Shield halo (outer pulsing ring)
               context.beginPath();
@@ -297,7 +327,7 @@ export function WireframeGlobe({
                 projected[1],
                 16 * scaleFactor * defensePulse,
                 0,
-                2 * Math.PI
+                2 * Math.PI,
               );
               context.strokeStyle = `rgba(0, 255, 136, ${(1 - defensePulse * 0.3) * 0.6})`;
               context.lineWidth = 2 * scaleFactor;
@@ -305,20 +335,38 @@ export function WireframeGlobe({
 
               // Main shield ring
               context.beginPath();
-              context.arc(projected[0], projected[1], 12 * scaleFactor, 0, 2 * Math.PI);
+              context.arc(
+                projected[0],
+                projected[1],
+                12 * scaleFactor,
+                0,
+                2 * Math.PI,
+              );
               context.strokeStyle = `rgba(0, 255, 136, 0.8)`;
               context.lineWidth = 1.5 * scaleFactor;
               context.stroke();
 
               // Protected point - glowing green
               context.beginPath();
-              context.arc(projected[0], projected[1], 4 * scaleFactor, 0, 2 * Math.PI);
+              context.arc(
+                projected[0],
+                projected[1],
+                4 * scaleFactor,
+                0,
+                2 * Math.PI,
+              );
               context.fillStyle = `rgba(0, 255, 136, 0.9)`;
               context.fill();
 
               // Inner glow
               context.beginPath();
-              context.arc(projected[0], projected[1], 2 * scaleFactor, 0, 2 * Math.PI);
+              context.arc(
+                projected[0],
+                projected[1],
+                2 * scaleFactor,
+                0,
+                2 * Math.PI,
+              );
               context.fillStyle = `rgba(255, 255, 255, 0.6)`;
               context.fill();
 
@@ -328,7 +376,11 @@ export function WireframeGlobe({
               context.fillStyle = "#00ff88";
               context.textAlign = "center";
               context.textBaseline = "bottom";
-              context.fillText("✓", projected[0], projected[1] - 10 * scaleFactor);
+              context.fillText(
+                "✓",
+                projected[0],
+                projected[1] - 10 * scaleFactor,
+              );
               context.globalAlpha = 1;
             }
           }
@@ -341,7 +393,7 @@ export function WireframeGlobe({
         setIsLoading(true);
 
         const response = await fetch(
-          "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/110m/physical/ne_110m_land.json"
+          "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/110m/physical/ne_110m_land.json",
         );
         if (!response.ok) throw new Error("Failed to load land data");
 
@@ -416,7 +468,7 @@ export function WireframeGlobe({
       const scaleFactor = event.deltaY > 0 ? 0.9 : 1.1;
       const newRadius = Math.max(
         radius * 0.5,
-        Math.min(radius * 3, projection.scale() * scaleFactor)
+        Math.min(radius * 3, projection.scale() * scaleFactor),
       );
       projection.scale(newRadius);
       render();
@@ -465,7 +517,8 @@ export function WireframeGlobe({
         border: "1.5px solid rgba(0, 240, 255, 0.3)",
         borderRadius: 3,
         overflow: "hidden",
-        boxShadow: "0 20px 60px rgba(0, 240, 255, 0.15), inset 0 0 40px rgba(0, 240, 255, 0.05)",
+        boxShadow:
+          "0 20px 60px rgba(0, 240, 255, 0.15), inset 0 0 40px rgba(0, 240, 255, 0.05)",
       }}
     >
       {isLoading && (
